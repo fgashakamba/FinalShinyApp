@@ -1,0 +1,54 @@
+---
+title: "My Shiny App Pitch"
+author: "Faustin GASHAKAMBA"
+date: "12/22/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## INTRODUCING MY SHINY APP
+
+### Who is the app designed for?
+
+- Students getting used to Shiny app development
+- Noobies who are learning R
+- JHU data science specialization lecturers
+
+## INTERNALS OF THE APP
+
+The app will load the mtcars dataset that comes installed in base R.
+It will then conduct an exploration analyis on this dataset to study the correlation between its various variables.
+Specifically, it will try to highlight the relationship between a car's mileage and other variables such as engine size (displacement) or engine power (Horse power).
+
+```{r mtcars, echo = TRUE}
+data("mtcars")
+head(mtcars)
+```
+
+## APP MECHANICS
+
+The app has two panels. In the left-side panel, the user is give asked to choose which variable to regress to the car's mileage.
+Upon choosing, say **Displacement,** the right-side panel will then present a scatter plot that shows the relationship between the displacement (X axis) and mileage (Y axis).
+
+## APP DEMO
+
+```{r demo1, echo = TRUE}
+library(ggplot2)
+y <- mtcars$mpg
+x <- mtcars$disp
+z <- mtcars$hp
+
+# Plot with displacement (engine size)
+g <- ggplot(mtcars, aes(x = x, y = y))
+g <- g + geom_point() + geom_smooth()
+g
+```
+```{r demo2, echo = TRUE}
+# Plot with engine power (Horse power)
+z <- mtcars$hp
+g <- ggplot(mtcars, aes(x = z, y = y))
+g <- g + geom_point() + geom_smooth()
+g
