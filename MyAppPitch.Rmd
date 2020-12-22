@@ -23,7 +23,7 @@ The app will load the mtcars dataset that comes installed in base R.
 It will then conduct an exploration analyis on this dataset to study the correlation between its various variables.
 Specifically, it will try to highlight the relationship between a car's mileage and other variables such as engine size (displacement) or engine power (Horse power).
 
-```{r mtcars, echo = TRUE}
+```{r mtcars, echo = TRUE, message=FALSE, comment=FALSE}
 data("mtcars")
 head(mtcars)
 ```
@@ -33,9 +33,9 @@ head(mtcars)
 The app has two panels. In the left-side panel, the user is give asked to choose which variable to regress to the car's mileage.
 Upon choosing, say **Displacement,** the right-side panel will then present a scatter plot that shows the relationship between the displacement (X axis) and mileage (Y axis).
 
-## APP DEMO
+### APP DEMO (Chart 1)
 
-```{r demo1, echo = TRUE}
+```{r demo1, echo = FALSE, message=FALSE, comment=FALSE}
 library(ggplot2)
 y <- mtcars$mpg
 x <- mtcars$disp
@@ -46,9 +46,14 @@ g <- ggplot(mtcars, aes(x = x, y = y))
 g <- g + geom_point() + geom_smooth()
 g
 ```
-```{r demo2, echo = TRUE}
+
+***
+### APP DEMO (Chart 2)
+
+```{r demo2, echo = TRUE, message=FALSE, comment=FALSE}
 # Plot with engine power (Horse power)
 z <- mtcars$hp
 g <- ggplot(mtcars, aes(x = z, y = y))
 g <- g + geom_point() + geom_smooth()
 g
+```
